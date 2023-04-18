@@ -113,11 +113,10 @@ if __name__ == "__main__":
             # print(embedding)
             if all(val == 0 for val in pdd_embedding):
                 print("{}This word is invalid! Please try again.{}".format(RED, RESET))
-                choice = input("Enter new word: ")
+                word2guess = input("Enter new word: ")
                 continue
                 
             correct_embedding = True
-            word2guess = choice
         
         input("Thanks! I have all the data I need...")
         
@@ -156,7 +155,7 @@ if __name__ == "__main__":
             plt.bar(x_labels, numbers, color=colors)
             
             # Set the plot title and axis labels
-            plt.ylim([0, 1])
+            plt.ylim([-1, 1])
             plt.title(f'Similitud con {word2guess[0]}')
             plt.xlabel('Participante')
             plt.ylabel('Similitud')
