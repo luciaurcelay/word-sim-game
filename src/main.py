@@ -133,12 +133,19 @@ if __name__ == "__main__":
         # Create new dictionary with sorted keys
         sorted_similarities = {key: similarities[key] for key in sorted_keys}
 
+        # Check if any number is negative (for visualization purposes)
+        has_negative_number = False
+        for value in sorted_similarities.values():
+            if value[1] < 0:
+                has_negative_number = True
+                break
+
         # Message showing winenr
         input("Let's see who the winner is!")
 
         winner = next(iter(sorted_similarities.keys()))
         input(f"Congratulations {winner}! You won!!")
-        input("Let's take a look at the ranking:")
+        print("Let's take a look at the ranking:")
 
         # Message showing rank
         for i, (key, value) in enumerate(sorted_similarities.items()):
@@ -155,8 +162,11 @@ if __name__ == "__main__":
             plt.bar(x_labels, numbers, color=colors)
             
             # Set the plot title and axis labels
-            plt.ylim([-1, 1])
-            plt.title(f'Similitud con {word2guess[0]}')
+            if has_negative_number:
+                plt.ylim([-1, 1])
+            else:
+                plt.ylim([0, 1])
+            plt.title(f'Similitud con {word2guess}')
             plt.xlabel('Participante')
             plt.ylabel('Similitud')
 
