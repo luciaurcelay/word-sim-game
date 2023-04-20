@@ -7,27 +7,41 @@
 
 An in-depth paragraph about your project and overview of use.
 Respuesta a un sinfín de discusiones
-
+* What is the game about
+* Snapshots of the game
 
 ## Getting Started
 
-### Dependencies
-
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+#### Optional: Create a Virtual Environment
+If you want to use a virtual environment to run the program, you can create one using venv module in Python. Follow the appropriate steps for your operating system:
+* Linux/Mac
+```
+python3 -m venv env
+source env/bin/activate
+```
+* Windows
+```
+python -m venv env
+.\env\Scripts\activate
+```
+
+#### Installing Python Dependencies
+After activating the virtual environment, install the required Python dependencies using pip:
+```
+pip install -r requirements.txt
+```
+This will install all the dependencies listed in the requirements.txt file.
 
 ### Executing program
+* To run the program, execute the main.py script:
+```
+python main.py
+```
+* This will run the program and execute the main functionality.
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+Congratulations! You have now successfully set up and executed the program.
 
 ## Help
 
