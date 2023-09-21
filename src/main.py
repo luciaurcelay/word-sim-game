@@ -3,11 +3,13 @@ from similarity_metrics import euclidean_word2vec
 
 import matplotlib.pyplot as plt
 import random
+from colorama import Fore, Style
 
 # Define ANSI escape codes for green text
 GREEN = '\033[92m'
 RED = '\033[91m'
 RESET = '\033[0m'
+BLUE = '\033[0;34m'
 
 # Define main block
 if __name__ == "__main__":
@@ -15,10 +17,10 @@ if __name__ == "__main__":
     while True:
     
         # Welcome the user
-        input("Hello! Welcome to 'Palabra del Día'! (Press Enter to continue...)")
+        input("Hello! Welcome to Word Similarity! (Press Enter to continue...)")
         
         # Ask for the number of players
-        num_players = int(input("{}Enter the number of players:{} ".format(GREEN, RESET)))
+        num_players = int(input("{}Enter the number of players:{} ".format(BLUE, RESET)))
 
         # Ask for the name of each player and their choice
         player_names = []
@@ -26,9 +28,9 @@ if __name__ == "__main__":
         nlp = load_nlp()
         for i in range(num_players):
             name = input("{}Enter the name of player {}: {}"
-                    .format(GREEN, i+1, RESET))
+                    .format(BLUE, i+1, RESET))
             choice = input("{}Enter the choice for player {}: {}"
-                        .format(GREEN, name, RESET))
+                        .format(BLUE, name, RESET))
             correct_embedding = False
             while correct_embedding == False:
                 # Compute embedding
@@ -41,70 +43,17 @@ if __name__ == "__main__":
                 correct_embedding = True
 
             player_names.append(name)
-            player_choices[name] = (choice, embedding)
-
-        # print(player_choices)   
+            player_choices[name] = (choice, embedding)  
 
         # Display the list of players and their choices
         print("The current list of players and their choices is:")
         for name, choice in player_choices.items():
             print("{}: {}".format(name, choice[0]))
 
-        '''# Ask the user if the list is correct
-        correct = input("{}Is the list correct? (yes/no): {}"
-                    .format(GREEN, RESET))
-
-        # Allow the user to modify the list
-        while correct.lower() == "no":
-            # Ask the user which player they want to modify
-            name_to_modify = input("{}Which player do you want to modify? (enter name): {}"
-                            .format(GREEN, RESET))
-            
-            # Check if the entered name is valid
-            if name_to_modify not in player_names:
-                print("{}Error: That user does not exist.{}".format(RED, RESET))
-                continue
-            
-            # Ask for the new choice for the player
-            new_choice = input("Enter the new choice for player {}: ".format(name_to_modify))
-            
-            # Update the player_choices dictionary with the new choice
-            player_choices[name_to_modify] = new_choice
-            
-            # Display the updated list of players and their choices
-            print("The current list of players and their choices is:")
-            for name, choice in player_choices.items():
-                print("{}: {}".format(name, choice))
-            
-            # Ask the user if the list is correct
-            correct = input("{}Is the list correct? (yes/no): {}"
-                        .format(GREEN, RESET))
-            
-            # Check if words have embeddings associated
-            input("Perfect! Let's check whether the words are valid...")
-
-            # Extract word2vec embedding from all the words
-            nlp = load_nlp()
-            
-            for name in player_names:
-                correct_embedding = False
-                while correct_embedding == False:
-                    # Compute embedding
-                    embedding = compute_vord2vec()
-                    if embedding != None:
-                        # Save in dictionary
-                        player_choices[name] = embedding
-                        correct_embedding = True
-                    else:
-
-        print("The final list of players and their choices is:")
-        for name, choice in player_choices.items():
-            print("{}: {}".format(name, choice))'''
-
-        # Ask the user for 'la palabra del día'
-        input("Okay, now is time to look up which the 'Palabra del Día is!")
-        word2guess = input("{}Which is the 'Palabra del Día'?: {}"
-                        .format(GREEN, RESET))
+        # Ask the user for word
+        input("Okay, now I need to know which word we'll be calculating similarity to!")
+        word2guess = input("{}Which is the word?: {}"
+                        .format(BLUE, RESET))
         
         correct_embedding = False
         while correct_embedding == False:
@@ -144,7 +93,7 @@ if __name__ == "__main__":
         input("Let's see who the winner is!")
 
         winner = next(iter(sorted_similarities.keys()))
-        input(f"Congratulations {winner}! You won!!")
+        print(f"Congratulations {Fore.GREEN}{winner}{Style.RESET_ALL}! You won!!")
         print("Let's take a look at the ranking:")
 
         # Message showing rank
@@ -152,7 +101,7 @@ if __name__ == "__main__":
             print(f"{i+1}. {key} achieved {value[1]} with the word '{value[0]}'")
 
         # Ask user if they want to plot the rank
-        plot = input("{}Do you want to plot the results? (Y/N):{}".format(GREEN, i+1, RESET))
+        plot = input("{}Do you want to plot the results? (Y/N):{}".format(BLUE, i+1, RESET))
 
         if plot == 'Y':
             x_labels = list(sorted_similarities.keys())
@@ -166,17 +115,17 @@ if __name__ == "__main__":
                 plt.ylim([-1, 1])
             else:
                 plt.ylim([0, 1])
-            plt.title(f'Similitud con {word2guess}')
-            plt.xlabel('Participante')
-            plt.ylabel('Similitud')
+            plt.title(f'Similarity with {word2guess}')
+            plt.xlabel('Player')
+            plt.ylabel('Similarity')
 
             plt.show()
 
 
         # Ask the participant if they want to play again
         play_again = input("{}Do you want to play again? (Y/N): {}"
-                        .format(GREEN, RESET))
+                        .format(BLUE, RESET))
         if play_again.lower() != "y":
             break
 
-    print("{}Thanks for playing!{}".format(GREEN, RESET))
+    print("Thanks for playing!")
