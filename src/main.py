@@ -64,7 +64,7 @@ if __name__ == "__main__":
             player_choices[name] = (choice, embedding)  
 
         # Display the list of players and their choices
-        input("The current list of players and their choices is:")
+        print("The current list of players and their choices is:")
         for name, choice in player_choices.items():
             print("{}: {}".format(name, choice[0]))
         

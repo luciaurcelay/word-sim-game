@@ -1,6 +1,6 @@
 # Palabra del Día
 <p align="center">
-  <img src="assets/logo.png" alt= “logo” width="30%" style="display: block; margin: 0 auto">
+  <img src="assets/logo.png" alt= “logo” width="10%" style="display: block; margin: 0 auto">
 </p>
 
 ## Description
@@ -33,6 +33,11 @@ After activating the virtual environment, install the required Python dependenci
 pip install -r requirements.txt
 ```
 This will install all the dependencies listed in the requirements.txt file.
+
+You will also need to run this command to download the embeddings:
+```
+python -m spacy download en_core_web_md 
+```
 
 ### Executing program
 * To run the program, execute the main.py script:
