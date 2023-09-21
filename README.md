@@ -1,14 +1,11 @@
 # Palabra del Día
 <p align="center">
-  <img src="assets/logo.png" alt= “logo” width="10%" style="display: block; margin: 0 auto">
+  <img src="assets/logo.png" alt= “logo” width="50%" style="display: block; margin: 0 auto">
 </p>
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
-Respuesta a un sinfín de discusiones
-* What is the game about
-* Snapshots of the game
+This game allows several players to compete to find the word most similar to a word of their choice!
 
 ## Getting Started
 
@@ -42,26 +39,14 @@ python -m spacy download en_core_web_md
 ### Executing program
 * To run the program, execute the main.py script:
 ```
-python main.py
+python src/main.py
 ```
 * This will run the program and execute the main functionality.
 
 Congratulations! You have now successfully set up and executed the program.
 
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
-
-## Future work
-Accept text in spanish.
 
 ## Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+* Lucia Urcelay
 
