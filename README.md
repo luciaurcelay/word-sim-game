@@ -1,6 +1,6 @@
 # Word Similarity Game
 <p align="center">
-  <img src="assets/logo.png" alt= “logo_word_sim” width="60%" style="display: block; margin: 0 auto">
+  <img src="assets/logo_word_sim”.png" alt= “logo_word_sim” width="60%" style="display: block; margin: 0 auto">
 </p>
 
 ## Description
