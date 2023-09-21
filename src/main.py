@@ -18,14 +18,32 @@ if __name__ == "__main__":
     
         # Welcome the user
         input("Hello! Welcome to Word Similarity! (Press Enter to continue...)")
+
+        # Ask the user for word
+        input("First I need to know which word we'll be calculating similarity to!")
+        word2guess = input("{}Which is the word?: {}"
+                        .format(BLUE, RESET))
+        
+        nlp = load_nlp()
+        correct_embedding = False
+        while correct_embedding == False:
+            # Compute embedding
+            pdd_embedding = compute_vord2vec(word2guess, nlp)
+            # print(embedding)
+            if all(val == 0 for val in pdd_embedding):
+                print("{}This word is invalid! Please try again.{}".format(RED, RESET))
+                word2guess = input("Enter new word: ")
+                continue
+                
+            correct_embedding = True
         
         # Ask for the number of players
-        num_players = int(input("{}Enter the number of players:{} ".format(BLUE, RESET)))
+        num_players = int(input("{}Now, enter the number of players:{} ".format(BLUE, RESET)))
 
         # Ask for the name of each player and their choice
         player_names = []
         player_choices = {}
-        nlp = load_nlp()
+        
         for i in range(num_players):
             name = input("{}Enter the name of player {}: {}"
                     .format(BLUE, i+1, RESET))
@@ -46,26 +64,9 @@ if __name__ == "__main__":
             player_choices[name] = (choice, embedding)  
 
         # Display the list of players and their choices
-        print("The current list of players and their choices is:")
+        input("The current list of players and their choices is:")
         for name, choice in player_choices.items():
             print("{}: {}".format(name, choice[0]))
-
-        # Ask the user for word
-        input("Okay, now I need to know which word we'll be calculating similarity to!")
-        word2guess = input("{}Which is the word?: {}"
-                        .format(BLUE, RESET))
-        
-        correct_embedding = False
-        while correct_embedding == False:
-            # Compute embedding
-            pdd_embedding = compute_vord2vec(word2guess, nlp)
-            # print(embedding)
-            if all(val == 0 for val in pdd_embedding):
-                print("{}This word is invalid! Please try again.{}".format(RED, RESET))
-                word2guess = input("Enter new word: ")
-                continue
-                
-            correct_embedding = True
         
         input("Thanks! I have all the data I need...")
         
