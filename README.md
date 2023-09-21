@@ -1,6 +1,6 @@
-# Palabra del Día
+# Word Similarity Game
 <p align="center">
-  <img src="assets/logo.png" alt= “logo” width="50%" style="display: block; margin: 0 auto">
+  <img src="assets/logo.png" alt= “logo” width="70%" style="display: block; margin: 0 auto">
 </p>
 
 ## Description
