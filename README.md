@@ -5,7 +5,7 @@
 
 ## Description
 
-This game allows several players to compete to find the word most similar to a word of their choice!
+This game allows several players to compete to find the most similar word to another word of their choice!
 
 ## Getting Started
 
